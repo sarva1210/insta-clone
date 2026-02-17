@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-async function identifyuser(req,res,next) {
+async function identifyUser(req,res,next) {
     const token = req.cookies.token
 
     if(!token){
@@ -20,4 +20,4 @@ async function identifyuser(req,res,next) {
     next()
 }
 
-module.exports = identifyuser
+module.exports = {identifyUser}
