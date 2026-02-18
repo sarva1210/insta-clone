@@ -15,10 +15,24 @@ userRouter.post(
   identifyUser,
   userController.followUserController
 )
+
 userRouter.post(
   '/unfollow/:username',
   identifyUser,
   userController.unfollowUserController
 )
+
+userRouter.post(
+  '/accept/:username',
+  identifyUser,
+  userController.acceptFollowRequestController
+)
+
+userRouter.post(
+  '/reject/:username',
+  identifyUser,
+  userController.rejectFollowRequestController
+)
+
 
 module.exports = userRouter
