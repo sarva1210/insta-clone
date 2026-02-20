@@ -1,10 +1,13 @@
 import { RouterProvider, useRoutes } from "react-router"
 import AppRoutes from './AppRoutes'
 import './style.scss'
-function App() {
+import { AuthProvider } from "./features/auth/auth.context.jsx"
 
+function App() {
   return (
-    <AppRoutes/>
+    <AuthProvider>
+      <AppRoutes/>
+    </AuthProvider>
   )
 }
 
