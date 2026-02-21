@@ -1,19 +1,18 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 
-function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {/* default route */}
-        <Route path="/" element={<Navigate to="/login" />} />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default AppRoutes;
+export const router = createBrowserRouter([
+  {
+    path: "/login",
+    element:<Login/>
+  },
+  {
+    path: "register",
+    element:<Register/>
+  },
+  {
+    path:"/",
+    element:<h1>Welcome to 4 layer architecture of react</h1>
+  }
+])
