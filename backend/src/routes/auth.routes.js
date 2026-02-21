@@ -11,6 +11,7 @@ authRouter.post('/login', authController.loginController)
 
 // get: /api/auth/get-me  -> get the current logged in users information
 //private
-authRouter.get('/get-me',{identifyUser}, authController.getMeController)
+authRouter.get( '/get-me', identifyUser, authController.getMeController
+)
 
 module.exports = authRouter
