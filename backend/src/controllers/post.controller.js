@@ -85,9 +85,31 @@ async function likePostController(req,res) {
         like
     })
 }
+async function getFeedController(req,res){
+    const user = req.user
+    const posts = await Promise.all((await postModel.find().populate("user").lean()) //lean -> converts mongoose obj to regular obj 
+        .map(async (post) => {
+            // typeof post => object
+
+            const isLiked = await likeModel.findOne({
+                user: user.username,
+                post: post._id
+            })
+
+            post.isLiked = Boolean(isLiked)
+
+            return post
+        }))
+
+    res.status(200).json({
+        message:"posts fetched successfully",
+        posts
+    })
+}
 module.exports = {
     createPostController,
     getPostController,
     getPostDetailsController,
-    likePostController
+    likePostController,
+    getFeedController
 }
